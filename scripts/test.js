@@ -53,7 +53,7 @@ const RANGES = require('./data/ranges.json');
 function targetExceptions (zip, original_target) {
     // These are exceptions to the ranges that need to be explicitly remapped.
     const exceptions = {
-        '06390': 'NY', // CT range
+        // '06390': 'NY', // CT range
         '73960': 'TX', // OK range
         '83414': 'WY', // ID range
         '96799': 'AS', // HI range
