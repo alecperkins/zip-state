@@ -7,9 +7,11 @@
 
 For example, the user enters `WI` for their region but `63005` for their ZIP Code (belonging to `MO`) instead of `53005`, the discrepancy can be instantly detected.
 
-**Note:** this is using the _USPS mapping_ and is based on how ZIPs are used for [US mail routing and delivery](https://pe.usps.com/Archive/HTML/DMMArchive20050106/print/L002.htm). The USPS does not define geographic boundaries for ZIP Codes. The region found will not necessarily match how the US Census Bureau uses ZIP Codes for their ZIP Code Tabulation Areas, or correspond to actual geographic location. Particularly, some ZCTAs cross state lines, eg `81137`. This library may be helpful for rough geographic validation, but should not be relied on for precise geolocation.
+[See an in-browser example](https://alecperkins.net/zip-state).
 
 Every real ZIP Code will work. However, it is not a comprehensive listing. In most cases it will not check the complete input, only the first three digits that form the prefix. If that prefix range is in-use, non-existent ZIP Codes may still return that region. For example, `83005` will match Wyoming (`830` prefix), even though that specific ZIP Code does not (currently) exist. It also currently does not support Canadian or other non-US postal codes. See _Alternatives_ below for other options.
+
+**Note:** this is using the _USPS mapping_ and is based on how ZIPs are used for [US mail routing and delivery](https://pe.usps.com/Archive/HTML/DMMArchive20050106/print/L002.htm). The USPS does not define geographic boundaries for ZIP Codes. The region found will not necessarily match how the US Census Bureau uses ZIP Codes for their ZIP Code Tabulation Areas, or correspond to actual geographic location. Particularly, some ZCTAs cross state lines, eg `81137`. This library may be helpful for rough geographic validation, but should not be relied on for precise geolocation.
 
 
 ## Installation
@@ -62,7 +64,7 @@ const region = zipState('10001-1234');
 Alec Perkins, https://alecperkins.net
 
 
-### License
+## License
 
 The packaged mapping and lookup function code, and published build tooling, is licensed under the Creative Commons “CC0 1.0 Universal” license.
 
