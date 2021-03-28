@@ -8,48 +8,27 @@
             max-width: 480px;
             margin: 10vh auto;
             padding: 1rem;
+            font-size: 24px;
             font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
         h1 {
             font-weight: 300;
+            margin-bottom: 4rem;
             text-align: center;
         }
         fieldset {
-            padding-top: 1rem;
+            padding: 2rem;
         }
         .Field {
-            display: flex;
-            margin-bottom: 1rem;
-            flex-direction: row;
-            align-items: center;
-            width: 100%;
-        }
-        .Field label {
-            margin-right: 1rem;
             flex-grow: 1;
         }
-        .Field input {
-            width: 200px;
+        .Field._Input, .Field label {
+            width: 100%;
+            display: block;
         }
-        input, button {
+        input {
             font-size: inherit;
             font-family: inherit;
-        }
-        button {
-            cursor: pointer;
-            float: right;
-        }
-        #feedback_el[data-validity="none"] {
-            display: none;
-        }
-        #feedback_el[data-validity="success"] {
-            color: green;
-        }
-        #feedback_el[data-validity="warning"] {
-            color: orange;
-        }
-        #feedback_el[data-validity="error"] {
-            color: red;
         }
         #zip_el {
             width: 170px;
@@ -64,106 +43,31 @@
     <h1><a href="https://www.npmjs.com/package/zip-state">zip-state</a> example</h1>
     <form id="form_el">
         <fieldset>
-            <legend>Enter a USPS state/region abbreviation and ZIP Code</legend>
-
-            <div class="Field">
-                <label for="region_el">
-                    Region:
-                </label>
-                <input  id="region_el" type="text" name="region" list="region_list" pattern="AK|AL|AR|AZ|CA|CO|CT|DE|FL|GA|HI|IA|ID|IL|IN|KS|KY|LA|MA|MD|ME|MI|MN|MO|MS|MT|NC|ND|NE|NV|NH|NJ|NM|NY|OH|OK|OR|PA|RI|SC|SD|TN|TX|UT|VA|VT|WA|WI|WV|WY|AS|DC|GU|MP|PR|VI|FM|MH|PW|AA|AE|AP" required placeholder="ZZ">
-                <datalist id="region_list">
-                    <option value="AK">AK - Alaska</option>
-                    <option value="AL">AL - Alabama</option>
-                    <option value="AR">AR - Arkansas</option>
-                    <option value="AZ">AZ - Arizona</option>
-                    <option value="CA">CA - California</option>
-                    <option value="CO">CO - Colorado</option>
-                    <option value="CT">CT - Connecticut</option>
-                    <option value="DE">DE - Delaware</option>
-                    <option value="FL">FL - Florida</option>
-                    <option value="GA">GA - Georgia</option>
-                    <option value="HI">HI - Hawaii</option>
-                    <option value="IA">IA - Iowa</option>
-                    <option value="ID">ID - Idaho</option>
-                    <option value="IL">IL - Illinois</option>
-                    <option value="IN">IN - Indiana</option>
-                    <option value="KS">KS - Kansas</option>
-                    <option value="KY">KY - Kentucky</option>
-                    <option value="LA">LA - Louisiana</option>
-                    <option value="MA">MA - Massachusetts</option>
-                    <option value="MD">MD - Maryland</option>
-                    <option value="ME">ME - Maine</option>
-                    <option value="MI">MI - Michigan</option>
-                    <option value="MN">MN - Minnesota</option>
-                    <option value="MO">MO - Missouri</option>
-                    <option value="MS">MS - Mississippi</option>
-                    <option value="MT">MT - Montana</option>
-                    <option value="NC">NC - North Carolina</option>
-                    <option value="ND">ND - North Dakota</option>
-                    <option value="NE">NE - Nebraska</option>
-                    <option value="NV">NV - Nevada</option>
-                    <option value="NH">NH - New Hampshire</option>
-                    <option value="NJ">NJ - New Jersey</option>
-                    <option value="NM">NM - New Mexico</option>
-                    <option value="NY">NY - New York</option>
-                    <option value="OH">OH - Ohio</option>
-                    <option value="OK">OK - Oklahoma</option>
-                    <option value="OR">OR - Oregon</option>
-                    <option value="PA">PA - Pennsylvania</option>
-                    <option value="RI">RI - Rhode Island</option>
-                    <option value="SC">SC - South Carolina</option>
-                    <option value="SD">SD - South Dakota</option>
-                    <option value="TN">TN - Tennessee</option>
-                    <option value="TX">TX - Texas</option>
-                    <option value="UT">UT - Utah</option>
-                    <option value="VA">VA - Virginia</option>
-                    <option value="VT">VT - Vermont</option>
-                    <option value="WA">WA - Washington</option>
-                    <option value="WI">WI - Wisconsin</option>
-                    <option value="WV">WV - West Virginia</option>
-                    <option value="WY">WY - Wyoming</option>
-
-                    <option value="AS">AS - American Samoa</option>
-                    <option value="DC">DC - District of Columbia</option>
-                    <option value="GU">GU - Guam</option>
-                    <option value="MP">MP - Northern Mariana Islands</option>
-                    <option value="PR">PR - Puerto Rico</option>
-                    <option value="VI">VI - US Virgin Islands</option>
-
-                    <option value="FM">FM - Micronesia</option>
-                    <option value="MH">MH - Marshall Islands</option>
-                    <option value="PW">PW - Palau</option>
-
-                    <option value="AA">AA - US Armed Forces - Americas</option>
-                    <option value="AE">AE - US Armed Forces - Europe</option>
-                    <option value="AA">AP - US Armed Forces - Pacific</option>
-                </datalist>
+            <legend>Enter a USPS ZIP Code, get Region</legend>
+            <div style="display: flex; flex-direction: row;">
+                <div class="Field">
+                    <label for="zip_el">
+                        ZIP Code:
+                    </label>
+                    <input id="zip_el" class="_Input" type="text" name="zip" inputmode="numeric" pattern="^[0-9]{5}(?:-[0-9]{4})?$" required placeholder="60652">
+                </div>
+                <div class="Field">
+                    <label for="zip_region_el">
+                        Region:
+                    </label>
+                    <span id="zip_region_el" class="_Input"></span>
+                </div>
             </div>
-            <div class="Field">
-                <label for="zip_el">
-                    ZIP Code:
-                </label>
-                <input id="zip_el" type="text" name="zip" inputmode="numeric" pattern="^[0-9]{5}(?:-[0-9]{4})?$" required placeholder="98765">
-                <span id="zip_region_el"></span>
-            </div>
-            <button id="submit_el">Submit</button>
-            <p id="feedback_el"></p>
         </fieldset>
     </form>
     <script src="./zip-state.js"></script>
     <script>
-        const region_el = document.getElementById('region_el');
         const zip_el = document.getElementById('zip_el');
         const zip_region_el = document.getElementById('zip_region_el');
-        const feedback_el = document.getElementById('feedback_el');
         const form_el = document.getElementById('form_el');
 
         form_el.addEventListener('submit', (ev) => {
             ev.preventDefault();
-            validate();
-        });
-
-        region_el.addEventListener('change', (ev) => {
             validate();
         });
 
@@ -175,67 +79,13 @@
             validate(true);
         });
 
-
-        region_el.addEventListener('focus', (ev) => {
-            feedback_el.textContent = '';
-            feedback_el.dataset.validity = '';
-        });
-        zip_el.addEventListener('focus', (ev) => {
-            feedback_el.textContent = '';
-            feedback_el.dataset.validity = '';
-        });
-
         let validate_timeout;
         function validate (soft=false) {
             clearTimeout(validate_timeout);
             validate_timeout = setTimeout(function () {
-                const region = region_el.value;
                 const zip = zip_el.value;
                 const zip_region = window.zipState(zip);
-
                 zip_region_el.textContent = zip_el.validity.valid ? (zip_region ? zip_region : '—') : '';
-
-                let validity = 'none';
-                let feedback = '';
-                if (!zip_el.validity.valid || !region_el.validity.valid) {
-                    if (soft || !region || !zip) {
-                        feedback = '';
-                        validity = 'none';
-                    } else {
-                        feedback = 'Please enter a valid'
-                        if (!region_el.validity.valid) {
-                            feedback += ' region abbreviation';
-                        }
-                        if (!zip_el.validity.valid) {
-                            if (!region_el.validity.valid) {
-                                feedback += ', and';
-                            }
-                            feedback += ' ZIP or ZIP+4 Code';
-                        }
-                        feedback += '.';
-                        validity = 'warning';
-                    }
-                } else {
-
-                    if (zip && region) {
-                        if (!zip_region) {
-                            feedback = `ZIP Code does not match any regions.`;
-                            validity = 'error';
-                        } else if (zip_region !== region) {
-                            feedback = `ZIP Code region (${zip_region}) does not match selected region (${region})`;
-                            validity = 'error';
-                        } else {
-                            feedback = 'ZIP Code matches region!';
-                            validity = 'success';
-                        }
-                    } else {
-                        feedback = '';
-                        validity = 'none';
-                    }
-                }
-
-                feedback_el.textContent = feedback;
-                feedback_el.dataset.validity = validity;
             }, 10);
         }
     </script>
