@@ -1,5 +1,8 @@
 # ZIP-State
 
+![npm package](https://img.shields.io/npm/v/zip-state) ![CC0-1.0 license](https://img.shields.io/npm/l/zip-state) ![test status](https://github.com/alecperkins/zip-state/actions/workflows/node.js.yml/badge.svg)
+
+
 `zip-state` is a lightweight mapping of USPS-defined ZIP Codes to their assigned regions. Given a 5- or 9-digit ZIP Code, `zip-state` will return the USPS abbreviation for the corresponding region. It is well suited for quick real-time checking of user address input and validating the most significant digits of the ZIP code.
 
 For example, the user enters `WI` for their region but `63005` for their ZIP Code (belonging to `MO`) instead of `53005`, the discrepancy can be instantly detected.
@@ -54,15 +57,19 @@ const region = zipState('10001-1234');
 // region === 'NY'
 ```
 
+## Author
 
-## License
+Alec Perkins, https://alecperkins.net
+
+
+### License
 
 The packaged mapping and lookup function code, and published build tooling, is licensed under the Creative Commons “CC0 1.0 Universal” license.
 
 See `./LICENSE` for more information.
 
 
-## Acknowledgements
+### Acknowledgements
 
 Assembled ZIP Code data is derived from the [database](http://federalgovernmentzipcodes.us) provided by [Daniel. S. Coven](https://www.linkedin.com/in/daniel-s-coven-56273411b):
 
