@@ -1,4 +1,4 @@
-import zipState from '../../zip-state';
+const zipState = require('../zip-state');
 
 const samples = [
     '00544', // NY (IRS)

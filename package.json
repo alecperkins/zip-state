@@ -12,8 +12,12 @@
     "package": "npm run build && npm run test && npm pack --dry-run ./zip-state",
     "publish": "npm run package && node ./scripts/confirm-publish.js && npm publish ./zip-state",
     "example-browser": "node ./scripts/example.js",
-    "example-ts": "ts-node ./scripts/example/typescript.ts",
-    "test": "node ./scripts/test.js"
+    "example-common": "node ./examples/common.js",
+    "example-module": "node ./examples/module.mjs",
+    "example-ts": "ts-node ./examples/typescript.ts",
+    "test:examples": "npm run example-common && npm run example-module && npm run example-ts",
+    "test:script": "node ./scripts/test.js",
+    "test": "npm run test:script && npm run test:examples"
   },
   "repository": {
     "type": "git",
