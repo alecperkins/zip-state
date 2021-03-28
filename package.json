@@ -1,0 +1,43 @@
+{
+  "name": "zip-state",
+  "version": "1.0.0-rc1",
+  "description": "Lightweight mapping of USPS ZIP Codes to their assigned region.",
+  "main": "zip-state.js",
+  "private": true,
+  "engines": {
+    "node": ">=14.14"
+  },
+  "scripts": {
+    "build": "node ./scripts/build.js",
+    "package": "npm run build && npm run test && npm pack --dry-run ./zip-state",
+    "publish": "npm run package && node ./scripts/confirm-publish.js && npm publish ./zip-state",
+    "example-browser": "node ./scripts/example.js",
+    "example-ts": "ts-node ./scripts/example/typescript.ts",
+    "test": "node ./scripts/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alecperkins/zip-state.git"
+  },
+  "keywords": [
+    "mail",
+    "mailing",
+    "postal",
+    "postalcode",
+    "regions",
+    "states",
+    "usps",
+    "zip",
+    "zipcode"
+  ],
+  "author": "Alec Perkins <code@alecperkins.me>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/alecperkins/zip-state/issues"
+  },
+  "homepage": "https://alecperkins.net/zip-state",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  }
+}
