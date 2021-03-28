@@ -7,6 +7,7 @@ const samples = [
     '10001-1234', // NY ZIP+4
     '39152', // MS
     '56800', // Unused range, not real
+    '83414', // Actually WY but in the ID range
     '90210', // CA,
     'H3B 3A7', // Real but Canadian, not currently supported
 ];
