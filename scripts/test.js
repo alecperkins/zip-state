@@ -57,7 +57,6 @@ function targetExceptions (zip, original_target) {
         '73960': 'TX', // OK range
         '83414': 'WY', // ID range
         '96799': 'AS', // HI range
-        '97003': 'AP', // OR range
     }
     return exceptions[zip] || original_target;
 }
