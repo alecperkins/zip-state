@@ -1,6 +1,6 @@
 {
   "name": "zip-state",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight mapping of USPS ZIP Codes to their assigned region.",
   "main": "zip-state.js",
   "private": true,
