@@ -15,6 +15,7 @@ const samples = {
     '39152': 'MS',
     '56800': null,  // Unused range, not real
     '95193': 'CA',
+    '72643': 'MO', // Actually MO but in the AR range
     '81137': 'CO', // Predominantly CO but Census includes part of NM
     '83005': 'WY', // Not a real zip code but in used range
     '83414': 'WY', // Actually WY but in the ID range
@@ -24,7 +25,7 @@ const samples = {
 Object.entries(samples).forEach(([zip, target]) => {
     const found = zipState(zip);
     if (found !== target) {
-        console.log('test', zip, zip.slice(0,3), found, target);
+        console.log('test', zip, zip.slice(0,3), { found, target });
         errors += 1;
     } else {
         successes += 1;
@@ -37,7 +38,7 @@ Object.entries(ALL_ZIP_CODES).forEach(([target, zips]) => {
     zips.forEach((zip) => {
         const found = zipState(zip);
         if (found !== target) {
-            console.log('test', zip, zip.slice(0,3), found, target);
+            console.log('test', zip, zip.slice(0,3), { found, target });
             errors += 1;
         } else {
             successes += 1;
@@ -55,6 +56,7 @@ function targetExceptions (zip, original_target) {
     const exceptions = {
         '06390': 'NY', // CT range
         '73960': 'TX', // OK range
+        '72643': 'MO', // AR range
         '83414': 'WY', // ID range
         '96799': 'AS', // HI range
     }
@@ -72,7 +74,7 @@ Object.entries(RANGES).forEach(([target, ranges]) => {
             const _target = targetExceptions(zip, target);
             const found = zipState(zip);
             if (found && found.toString() !== _target) {
-                console.log('test', zip, zip.slice(0,3), found, target);
+                console.log('test', zip, zip.slice(0,3), { found, target });
                 errors += 1;
             } else {
                 successes += 1;
